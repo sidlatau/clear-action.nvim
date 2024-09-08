@@ -38,9 +38,7 @@ local function create_popup(action_tuples)
   local max_len = 0
   for _, value in pairs(action_tuples) do
     local len = #value[2].title
-    if not config.options.popup.hide_client then
-      len = len + #client_name(value[1])
-    end
+    if not config.options.popup.hide_client then len = len + #client_name(value[1]) end
     if max_len < len then max_len = len end
   end
   local width = max_len + 6
@@ -81,9 +79,7 @@ local function fill_popup(bufnr, action_tuples, labels)
   local lines = vim.tbl_map(function(value)
     local title = value[2].title
     local row = labels[title] .. " " .. title
-    if not config.options.popup.hide_client then
-      row = row .. " " .. client_name(value[1])
-    end
+    if not config.options.popup.hide_client then row = row .. " " .. client_name(value[1]) end
     return row
   end, action_tuples)
 
